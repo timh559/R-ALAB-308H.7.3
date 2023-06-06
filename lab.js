@@ -38,18 +38,35 @@ class Person {
     greet() {
         console.log(`Hello ${this.name}`);
     }
-    eat() {
-        this.weight += 10;
-        this.mood += 5;
+    eat(num) {
+        this.weight += (10 * num);
+        this.mood += (5 * num);
     }
-    exercise() {
-        this.weight -= 5;
+    exercise(num) {
+        this.weight -= (5 * num);
     }
     ageUp(num) {
         this.age += (1 * num);
         this.height += (3 * num);
-        this.weight += (2 * num);
-        this.mood -= (2 * num);
+        this.weight += (4 * num);
+        this.mood -= (1 * num);
         this.bankAccount += (10 * num);
     }
+    buyHamster(hamster) {
+        this.hamsters.push(hamster);
+        this.mood += 10;
+        this.bankAccount -= hamster.getPrice();
+    }
 }
+let timmy = new Person("Timmy");
+timmy.ageUp(5);
+timmy.eat(5);
+timmy.exercise(5);
+timmy.ageUp(9);
+let gus = new Hamster("Gus");
+gus.owner = "Timmy";
+timmy.buyHamster(gus);
+timmy.ageUp(15);
+timmy.eat(2);
+timmy.exercise(2);
+console.log(timmy);
